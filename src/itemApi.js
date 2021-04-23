@@ -1,15 +1,16 @@
-const itemUrl = "http://localhost:3000/items"
-const listCont = document.getElementById('item-list')
+class itemApi {
+    static itemUrl = "http://localhost:3000/items"
 
-function grabItems(){
-    fetch(itemUrl)
-    .then(resp => resp.json())
-    .then(resp => {
-        resp["data"].forEach(item => {
-            const li = document.createElement('li')
-            li.innerText = `${item.attributes.name} - $${item.attributes.price}`
-
-            listCont.appendChild(li)
+    static grabItems(){
+        fetch(this.itemUrl)
+        .then(resp => resp.json())
+        .then(resp => {
+            resp["data"].forEach(item => {
+                const newI = new Item({id: item.id, ...item.attributes, category_id: item.relationships.category.data.id})
+                
+                newI.addToList()
+            })
         })
-    })
+    }
+
 }
