@@ -9,12 +9,42 @@ class Item {
         this.description = description
         this.image_url = image_url
         this.category_id = category_id
+
+        this.li = document.createElement('li')
+        this.li.id = `i${id}`
+
+        this.li.addEventListener('click', this.showFullDetails)
+
+        Item.allItems.push(this)
     }
 
     addToList(){
-        const li = document.createElement('li')
-        li.innerText = `${this.name} - $${this.price}`
-    
-        listCont.appendChild(li)
+        this.li.innerHTML= `
+            <div class="item-li" id="${this.id}">
+                <strong>${this.name}</strong>
+            </div>
+            `
+        listCont.appendChild(this.li)
     }
+
+    showFullDetails(e){
+        const iCont = document.getElementById('item-container')
+        const newCont = document.getElementById('full-info')
+        const i = Item.allItems.find(item => item.id === this.firstElementChild.id)
+
+        iCont.classList.add("hidden")
+        newCont.classList.remove("hidden")
+
+        const pic = document.createElement('img')
+        pic.src = `${i.image_url}`
+        pic.classList.add("pic")
+        
+        newCont.innerHTML = `
+            <span class="info-name"><strong>${i.name}</strong></span><br>
+            <span class="info-price">Price: $${i.price}</span> | <span class="info-quantity">Quantity: ${i.quantity}</span><br><br>
+            <span class="info-description">${i.description}</span><br>
+        `
+        newCont.appendChild(pic)
+    }
+
 }

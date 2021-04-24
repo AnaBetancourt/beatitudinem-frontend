@@ -6,3 +6,19 @@
 #header-title {
     text-align: center;
 }
+
+.hidden {
+    display: none;
+}
+
+.pic {
+    justify-self: center;
+    height: 12rem;
+    width: auto;
+}
+
+.info-name {
+    text-align: center;
+    font-size: x-large;
+    color: darkcyan;
+}
