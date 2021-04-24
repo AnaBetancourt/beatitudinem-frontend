@@ -1,5 +1,5 @@
 class Item {
-    static allItems = []
+    static all = []
 
     constructor({id, name, price, quantity, description, image_url, category_id}){
         this.id = id
@@ -15,7 +15,7 @@ class Item {
 
         this.li.addEventListener('click', this.showFullDetails)
 
-        Item.allItems.push(this)
+        Item.all.push(this)
     }
 
     addToList(){
@@ -27,12 +27,13 @@ class Item {
         listCont.appendChild(this.li)
     }
 
-    showFullDetails(e){
+    showFullDetails(){
         const iCont = document.getElementById('item-container')
         const newCont = document.getElementById('full-info')
-        const i = Item.allItems.find(item => item.id === this.firstElementChild.id)
+        const i = Item.all.find(item => item.id === this.firstElementChild.id)
 
         iCont.classList.add("hidden")
+        formCont.classList.add("hidden")
         newCont.classList.remove("hidden")
 
         const pic = document.createElement('img')
@@ -45,6 +46,22 @@ class Item {
             <span class="info-description">${i.description}</span><br>
         `
         newCont.appendChild(pic)
+
+        const backBtn = document.createElement('button')
+        backBtn.innerHTML = "⮨ item list"
+        btnCont.appendChild(backBtn)
+
+        const editBtn = document.createElement('button')
+        editBtn.innerText = "Edit Item Info"
+        btnCont.appendChild(editBtn)
+
+        const increaseBtn = document.createElement('button')
+        increaseBtn.innerText = "+"
+        btnCont.appendChild(increaseBtn)
+
+        const decreaseBtn = document.createElement('button')
+        decreaseBtn.innerText = "-"
+        btnCont.appendChild(decreaseBtn)
     }
 
 }
