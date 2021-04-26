@@ -1,7 +1,7 @@
 class Item {
     static all = []
 
-    constructor({id, name, price, quantity, description, image_url, category_id}){
+    constructor({id, name, price, quantity, description, image_url, category_id, category_name}){
         this.id = id
         this.name = name
         this.price = price
@@ -9,6 +9,7 @@ class Item {
         this.description = description
         this.image_url = image_url
         this.category_id = category_id
+        this.category = category_name
 
         this.li = document.createElement('li')
         this.li.id = `i${id}`

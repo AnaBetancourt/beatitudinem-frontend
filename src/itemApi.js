@@ -6,7 +6,9 @@ class itemApi {
         .then(resp => resp.json())
         .then(resp => {
             resp["data"].forEach(item => {
-                const newI = new Item({id: item.id, ...item.attributes, category_id: item.relationships.category.data.id})
+                // console.log(item)
+                // debugger
+                const newI = new Item({id: item.id, ...item.attributes})
                 
                 newI.addToList()
             })
