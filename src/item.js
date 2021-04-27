@@ -85,11 +85,10 @@ class Item {
             e.target.innerText = "Save Changes"
             this.hideInfoBtns()
             this.createEditForm()
-            console.log(e)
-            console.log(this)
-            debugger
+
         } else if (e.target.innerText === "Save Changes"){
             e.target.innerText = "Edit Item Info"
+            this.saveEditedInfo()
             this.showInfoBtns()
         }
     }
@@ -104,15 +103,26 @@ class Item {
         document.getElementById('back-button').classList.remove("hidden")
         document.getElementById('add-button').classList.remove("hidden")
         document.getElementById('subtract-button').classList.remove("hidden")
+
+        showAddBtns()
+        formCont.classList.add("hidden")
     }
 
     createEditForm(){
         formCont.innerHTML = `
-            Name: <input type="text" name="name" value="${this.name}"><br>
-            Price: <input type="number" name="price" value="${this.price}"><br>
-            Description: <textarea name="description">${this.description}</textarea><br><br>
+            Name: <input type="text" id="new-name" name="name" value="${this.name}"><br>
+            Price: <input type="number" id="new-price" name="price" value="${this.price}"><br>
+            Description: <textarea id="new-desc" name="description">${this.description}</textarea><br><br>
         `
         formCont.classList.remove("hidden")
+    }
+
+    saveEditedInfo(){
+        this.name = document.getElementById('new-name').value
+        this.price = document.getElementById('new-price').value
+        this.description = document.getElementById('new-desc').value
+
+        itemApi.editItem(this)
     }
 
 }

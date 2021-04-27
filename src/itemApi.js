@@ -13,4 +13,30 @@ class itemApi {
         })
     }
 
+    static editItem(item){
+        const formData = {
+            name: item.name,
+            price: item.price,
+            description: item.description
+        }
+
+        const configObj = {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(formData)
+        }
+
+        fetch(this.itemUrl + "/" + `${item.id}`, configObj)
+        .then(resp => resp.json())
+        .then(resp => {
+            console.log(resp)
+            console.log(item)
+            console.log(this)
+            debugger
+        })
+    }
+
 }
