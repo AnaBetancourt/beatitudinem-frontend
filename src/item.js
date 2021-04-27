@@ -51,20 +51,25 @@ class Item {
         btnCont.classList.remove("hidden")
 
         const backBtn = document.createElement('button')
-        backBtn.innerHTML = "⮨ item list"
+        backBtn.innerText = "⮨ item list"
+        backBtn.id = "back-button"
         btnCont.appendChild(backBtn)
         backBtn.addEventListener('click', this.handleBackBtn)
 
         const editBtn = document.createElement('button')
         editBtn.innerText = "Edit Item Info"
+        editBtn.id = "edit-button"
         btnCont.appendChild(editBtn)
+        editBtn.addEventListener('click', this.handleEditBtn)
 
         const increaseBtn = document.createElement('button')
         increaseBtn.innerText = "+"
+        increaseBtn.id = "add-button"
         btnCont.appendChild(increaseBtn)
 
         const decreaseBtn = document.createElement('button')
         decreaseBtn.innerText = "-"
+        decreaseBtn.id = "subtract-button"
         btnCont.appendChild(decreaseBtn)
     }
 
@@ -72,6 +77,41 @@ class Item {
         iInfoCont.classList.add("hidden")
         btnCont.classList.add("hidden")
         iListCont.classList.remove("hidden")
+        formCont.classList.remove("hidden")
+    }
+
+    handleEditBtn = (e) =>{
+        if (e.target.innerText === "Edit Item Info"){
+            e.target.innerText = "Save Changes"
+            this.hideInfoBtns()
+            this.createEditForm()
+            console.log(e)
+            console.log(this)
+            debugger
+        } else if (e.target.innerText === "Save Changes"){
+            e.target.innerText = "Edit Item Info"
+            this.showInfoBtns()
+        }
+    }
+
+    hideInfoBtns(){
+        document.getElementById('back-button').classList.add("hidden")
+        document.getElementById('add-button').classList.add("hidden")
+        document.getElementById('subtract-button').classList.add("hidden")
+    }
+
+    showInfoBtns(){
+        document.getElementById('back-button').classList.remove("hidden")
+        document.getElementById('add-button').classList.remove("hidden")
+        document.getElementById('subtract-button').classList.remove("hidden")
+    }
+
+    createEditForm(){
+        formCont.innerHTML = `
+            Name: <input type="text" name="name" value="${this.name}"><br>
+            Price: <input type="number" name="price" value="${this.price}"><br>
+            Description: <textarea name="description">${this.description}</textarea><br><br>
+        `
         formCont.classList.remove("hidden")
     }
 
