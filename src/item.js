@@ -74,6 +74,8 @@ class Item {
     }
 
     handleBackBtn(e){
+        document.getElementById('item-list').innerHTML = ""
+        itemApi.grabItems()
         iInfoCont.classList.add("hidden")
         btnCont.classList.add("hidden")
         iListCont.classList.remove("hidden")

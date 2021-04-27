@@ -31,12 +31,7 @@ class itemApi {
 
         fetch(this.itemUrl + "/" + `${item.id}`, configObj)
         .then(resp => resp.json())
-        .then(resp => {
-            console.log(resp)
-            console.log(item)
-            console.log(this)
-            debugger
-        })
+        .then(resp => {item.showFullDetails()})
     }
 
 }
