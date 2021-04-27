@@ -28,29 +28,32 @@ class Item {
         listCont.appendChild(this.li)
     }
 
-    showFullDetails(){
-        const iCont = document.getElementById('item-container')
-        const newCont = document.getElementById('full-info')
-        const i = Item.all.find(item => item.id === this.firstElementChild.id)
-
-        iCont.classList.add("hidden")
-        formCont.classList.add("hidden")
-        newCont.classList.remove("hidden")
+    showFullDetails = () => {
+        iListCont.classList.add("hidden")
+        iInfoCont.classList.remove("hidden")
 
         const pic = document.createElement('img')
-        pic.src = `${i.image_url}`
+        pic.src = `${this.image_url}`
         pic.classList.add("pic")
         
-        newCont.innerHTML = `
-            <span class="info-name"><strong>${i.name}</strong></span><br>
-            <span class="info-price">Price: $${i.price}</span> | <span class="info-quantity">Quantity: ${i.quantity}</span><br><br>
-            <span class="info-description">${i.description}</span><br>
+        iInfoCont.innerHTML = `
+            <span class="info-name"><strong>${this.name}</strong></span><br>
+            <span class="info-price">Price: $${this.price}</span> | <span class="info-quantity">Quantity: ${this.quantity}</span><br><br>
+            <span class="info-description">${this.description}</span><br>
         `
-        newCont.appendChild(pic)
+        iInfoCont.appendChild(pic)
+        this.toggleButtons()
+    }
+
+    toggleButtons() {
+        formCont.classList.add("hidden")
+        btnCont.innerHTML = ""
+        btnCont.classList.remove("hidden")
 
         const backBtn = document.createElement('button')
         backBtn.innerHTML = "⮨ item list"
         btnCont.appendChild(backBtn)
+        backBtn.addEventListener('click', this.handleBackBtn)
 
         const editBtn = document.createElement('button')
         editBtn.innerText = "Edit Item Info"
@@ -63,6 +66,13 @@ class Item {
         const decreaseBtn = document.createElement('button')
         decreaseBtn.innerText = "-"
         btnCont.appendChild(decreaseBtn)
+    }
+
+    handleBackBtn(e){
+        iInfoCont.classList.add("hidden")
+        btnCont.classList.add("hidden")
+        iListCont.classList.remove("hidden")
+        formCont.classList.remove("hidden")
     }
 
 }
