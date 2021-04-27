@@ -66,11 +66,13 @@ class Item {
         increaseBtn.innerText = "+"
         increaseBtn.id = "add-button"
         btnCont.appendChild(increaseBtn)
+        increaseBtn.addEventListener('click', this.handleAddBtn)
 
         const decreaseBtn = document.createElement('button')
         decreaseBtn.innerText = "-"
         decreaseBtn.id = "subtract-button"
         btnCont.appendChild(decreaseBtn)
+        decreaseBtn.addEventListener('click', this.handleSubtractBtn)
     }
 
     handleBackBtn(e){
@@ -125,6 +127,16 @@ class Item {
         this.description = document.getElementById('new-desc').value
 
         itemApi.editItem(this)
+    }
+
+    handleAddBtn = () => {
+        this.quantity = this.quantity += 1
+        itemApi.editItem(this)
+        // adds number to view page but does not persist?
+    }
+
+    handleSubtractBtn(){
+
     }
 
 }
