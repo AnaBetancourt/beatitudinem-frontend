@@ -10,6 +10,8 @@ function showAddBtns(){
         <button id="new-item">Add Item</button>
         <button id="new-category">Add Category</button>
     `
+    document.getElementById('new-item').addEventListener('click', Item.handleItemAdd)
+    // document.getElementById('new-category').addEventListener('click', handleCategoryAdd)
 }
 
 showAddBtns()

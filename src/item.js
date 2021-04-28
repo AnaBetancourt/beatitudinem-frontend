@@ -139,4 +139,10 @@ class Item {
         itemApi.editItem(this)
     }
 
+    static handleItemAdd(event){
+        console.log(event)
+        console.log(this)
+        debugger
+    }
+
 }

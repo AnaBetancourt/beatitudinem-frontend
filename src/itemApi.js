@@ -35,4 +35,8 @@ class itemApi {
         .then(resp => {item.showFullDetails()})
     }
 
+    static addItem(item){
+    
+    }
+
 }
