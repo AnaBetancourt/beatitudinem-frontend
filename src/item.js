@@ -132,11 +132,11 @@ class Item {
     handleAddBtn = () => {
         this.quantity = this.quantity += 1
         itemApi.editItem(this)
-        // adds number to view page but does not persist?
     }
 
-    handleSubtractBtn(){
-
+    handleSubtractBtn = () =>{
+        this.quantity = this.quantity -= 1
+        itemApi.editItem(this)
     }
 
 }

@@ -17,7 +17,8 @@ class itemApi {
         const formData = {
             name: item.name,
             price: item.price,
-            description: item.description
+            description: item.description,
+            quantity: item.quantity
         }
 
         const configObj = {
