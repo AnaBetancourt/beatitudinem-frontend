@@ -35,16 +35,17 @@ class itemApi {
         .then(resp => {item.showFullDetails()})
     }
 
-    static addItem(e){
+    static addItem(){
         const formData = {
-            name: ,
-            price: ,
-            quantity: ,
-            description: ,
-            image_url: ,
-            category_id:
+            name: document.getElementById('create-name').value,
+            price: document.getElementById('create-price').value,
+            quantity: document.getElementById('create-quantity').value,
+            description: document.getElementById('create-desc').value,
+            image_url: document.getElementById('create-img-url').value,
+            category_id: document.getElementById('dropdown').value
         }
-        console.log(e)
+        console.log(event)
+        console.log(formData)
         console.log(this)
         debugger
     }

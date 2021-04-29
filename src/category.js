@@ -12,4 +12,11 @@ class Category {
         return Item.all.filter((item) => item.categoryId === parseInt(this.id))
     }
 
+    addToDropdown(){
+        const newOption = document.createElement('option')
+        newOption.value  = this.id 
+        newOption.innerText = this.name
+        document.getElementById('dropdown').append(newOption)
+    }
+
 }
