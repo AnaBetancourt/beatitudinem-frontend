@@ -35,8 +35,18 @@ class itemApi {
         .then(resp => {item.showFullDetails()})
     }
 
-    static addItem(item){
-    
+    static addItem(e){
+        const formData = {
+            name: ,
+            price: ,
+            quantity: ,
+            description: ,
+            image_url: ,
+            category_id:
+        }
+        console.log(e)
+        console.log(this)
+        debugger
     }
 
 }

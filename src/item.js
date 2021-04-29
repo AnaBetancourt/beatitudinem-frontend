@@ -139,8 +139,4 @@ class Item {
         itemApi.editItem(this)
     }
 
-    static createAddForm(){
-        
-    }
-
 }
