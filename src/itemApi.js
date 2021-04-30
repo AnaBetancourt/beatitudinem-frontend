@@ -1,7 +1,7 @@
 class itemApi {
     static itemUrl = "http://localhost:3000/items"
 
-    static grabItems(){
+    static grabItems = () =>{
         fetch(this.itemUrl)
         .then(resp => resp.json())
         .then(resp => {

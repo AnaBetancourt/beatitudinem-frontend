@@ -3,8 +3,14 @@ const formCont = document.getElementById('form-container')
 const btnCont = document.getElementById('btn-cont')
 const iListCont = document.getElementById('item-container')
 const iInfoCont = document.getElementById('full-info')
+const allPic = document.getElementById('all-items')
+const stonePic = document.getElementById('stones')
+const herbPic = document.getElementById('herbs')
+const candlePic = document.getElementById('candles')
+
 
 document.getElementById('new-item').addEventListener('click', showNewForm)
+allPic.addEventListener('click', showAll)
 
 function showNewForm(){
     categoryApi.getCategories()
@@ -30,4 +36,34 @@ function showNewForm(){
 
 }
 
-itemApi.grabItems()
+function showAll(){
+    stonePic.classList.add("hidden")
+    herbPic.classList.add("hidden")
+    candlePic.classList.add("hidden")
+
+    itemApi.grabItems()
+}
+
+function showStones(){
+    allPic.classList.add("hidden")
+    herbPic.classList.add("hidden")
+    candlePic.classList.add("hidden")
+
+    //display only stone category
+}
+
+function showHerbs(){
+    stonePic.classList.add("hidden")
+    allPic.classList.add("hidden")
+    candlePic.classList.add("hidden")
+
+    //display only herb category
+}
+
+function showCandles(){
+    stonePic.classList.add("hidden")
+    herbPic.classList.add("hidden")
+    allPic.classList.add("hidden")
+
+    //display only candle category
+}
