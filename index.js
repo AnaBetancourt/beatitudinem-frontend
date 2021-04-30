@@ -6,6 +6,18 @@ const navigation = document.getElementById('navigation')
 
 navigation.addEventListener('click', handleNavigationClick)
 
+function clearList(){
+    listCont.innerHTML = ""
+}
+
+function addHidden(element){
+    element.classList.add("hidden")
+}
+
+function removeHidden(element){
+    element.classList.remove("hidden")
+}
+
 function handleNavigationClick(event){
     const clickedBtn = event.target.parentElement.id
 
@@ -19,8 +31,10 @@ function handleNavigationClick(event){
 }
 
 function showNewForm(){
-    listCont.innerHTML = ""
-    formCont.classList.remove("hidden")
+    clearList()
+    removeHidden(formCont)
+
+    // formCont.classList.remove("hidden")
     formCont.innerHTML = `
         <h1>Create New Item</h1>
         <label for="name">Item Name:</label>
