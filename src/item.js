@@ -30,6 +30,7 @@ class Item {
 
     showFullDetails = () => {
         iInfoCont.classList.remove("hidden")
+        listCont.innerHTML = ""
 
         const pic = document.createElement('img')
         pic.src = `${this.image_url}`
