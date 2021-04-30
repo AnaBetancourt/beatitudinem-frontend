@@ -3,6 +3,7 @@ const formCont = document.getElementById('form-container')
 const btnCont = document.getElementById('btn-cont')
 const iInfoCont = document.getElementById('full-info')
 const navigation = document.getElementById('navigation')
+const fullView = document.getElementById('item-view')
 
 navigation.addEventListener('click', handleNavigationClick)
 
@@ -35,6 +36,7 @@ function showNewForm(){
     clearElement(btnCont)
     clearElement(iInfoCont)
     removeHidden(formCont)
+    removeHidden(fullView)
 
     formCont.innerHTML = `
         <h1>Create New Item</h1>
@@ -58,6 +60,7 @@ function showNewForm(){
 }
 
 function showAll(){
+    addHidden(fullView)
     addHidden(formCont)
     clearElement(listCont)
     clearElement(btnCont)
@@ -67,6 +70,7 @@ function showAll(){
 }
 
 function showCategory(clickedBtn){
+    addHidden(fullView)
     addHidden(formCont)
     clearElement(listCont)
     clearElement(btnCont)

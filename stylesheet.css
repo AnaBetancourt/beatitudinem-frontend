@@ -3,8 +3,8 @@
     height: auto;
 }
 
-.header-title {
-    text-align: center;
+.header-def {
+    text-align: right;
 }
 
 .hidden {
@@ -18,9 +18,8 @@
 }
 
 .info-name {
-    text-align: center;
     font-size: x-large;
-    color: darkcyan;
+    color: rgb(5, 170, 170);
 }
 
 .nav-img {
@@ -30,4 +29,17 @@
 
 .nav-btn {
     background-color: rgb(241, 247, 247);
+}
+
+header {
+    background-color: rgb(255, 255, 255);
+}
+
+body {
+    background: linear-gradient(200deg, rgb(198, 134, 235), rgb(25, 156, 177));
+    background-attachment: fixed;
+}
+
+#item-view {
+    background-color: rgb(255, 255, 255, 0.5);
 }
