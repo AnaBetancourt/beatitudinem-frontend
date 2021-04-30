@@ -25,8 +25,8 @@ class Item {
     }
 
     showFullDetails = () => {
-        iInfoCont.classList.remove("hidden")
-        listCont.innerHTML = ""
+        removeHidden(iInfoCont)
+        clearList()
 
         const pic = document.createElement('img')
         pic.src = `${this.image_url}`
@@ -43,7 +43,7 @@ class Item {
 
     toggleButtons() {
         btnCont.innerHTML = ""
-        btnCont.classList.remove("hidden")
+        removeHidden(btnCont)
 
         const editBtn = document.createElement('button')
         editBtn.innerText = "Edit Item Info"
@@ -52,13 +52,13 @@ class Item {
         editBtn.addEventListener('click', this.handleEditBtn)
 
         const increaseBtn = document.createElement('button')
-        increaseBtn.innerText = "+"
+        increaseBtn.innerText = "Increase Quantity"
         increaseBtn.id = "add-button"
         btnCont.appendChild(increaseBtn)
         increaseBtn.addEventListener('click', this.handleAddBtn)
 
         const decreaseBtn = document.createElement('button')
-        decreaseBtn.innerText = "-"
+        decreaseBtn.innerText = "Decrease Quantity"
         decreaseBtn.id = "subtract-button"
         btnCont.appendChild(decreaseBtn)
         decreaseBtn.addEventListener('click', this.handleSubtractBtn)
@@ -78,18 +78,20 @@ class Item {
     }
 
     hideInfoBtns(){
-        document.getElementById('back-button').classList.add("hidden")
-        document.getElementById('add-button').classList.add("hidden")
-        document.getElementById('subtract-button').classList.add("hidden")
+        const increase = document.getElementById('add-button')
+        const decrease = document.getElementById('subtract-button')
+
+        addHidden(increase)
+        addHidden(decrease)
     }
 
     showInfoBtns(){
-        document.getElementById('back-button').classList.remove("hidden")
-        document.getElementById('add-button').classList.remove("hidden")
-        document.getElementById('subtract-button').classList.remove("hidden")
+        addHidden(formCont)
+        const increase = document.getElementById('add-button')
+        const decrease = document.getElementById('subtract-button')
 
-        showAddBtns()
-        formCont.classList.add("hidden")
+        removeHidden(increase)
+        removeHidden(decrease)
     }
 
     createEditForm(){
@@ -98,7 +100,7 @@ class Item {
             Price: <input type="number" id="new-price" name="price" value="${this.price}"><br>
             Description: <textarea id="new-desc" name="description">${this.description}</textarea><br><br>
         `
-        formCont.classList.remove("hidden")
+        removeHidden(formCont)
     }
 
     saveEditedInfo(){
