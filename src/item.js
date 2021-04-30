@@ -48,12 +48,6 @@ class Item {
         btnCont.innerHTML = ""
         btnCont.classList.remove("hidden")
 
-        const backBtn = document.createElement('button')
-        backBtn.innerText = "⮨ item list"
-        backBtn.id = "back-button"
-        btnCont.appendChild(backBtn)
-        backBtn.addEventListener('click', this.handleBackBtn)
-
         const editBtn = document.createElement('button')
         editBtn.innerText = "Edit Item Info"
         editBtn.id = "edit-button"
@@ -71,11 +65,6 @@ class Item {
         decreaseBtn.id = "subtract-button"
         btnCont.appendChild(decreaseBtn)
         decreaseBtn.addEventListener('click', this.handleSubtractBtn)
-    }
-
-    handleBackBtn(e){
-        iInfoCont.classList.add("hidden")
-        btnCont.classList.add("hidden")
     }
 
     handleEditBtn = (e) =>{
