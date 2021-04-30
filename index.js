@@ -34,7 +34,6 @@ function showNewForm(){
     clearList()
     removeHidden(formCont)
 
-    // formCont.classList.remove("hidden")
     formCont.innerHTML = `
         <h1>Create New Item</h1>
         <label for="name">Item Name:</label>
@@ -54,18 +53,17 @@ function showNewForm(){
     `
     categoryApi.addCategories()
     document.getElementById('submit').addEventListener('click', itemApi.addItem)
-
 }
 
 function showAll(){
-    formCont.classList.add("hidden")
-    listCont.innerHTML = ""
+    addHidden(formCont)
+    clearList()
     Item.all.forEach(item => item.addToList())
 }
 
 function showCategory(clickedBtn){
-    formCont.classList.add("hidden")
-    listCont.innerHTML = ""
+    addHidden(formCont)
+    clearList()
     const clickedCategory = Category.all.find(category => category.name === clickedBtn)
 
     if (clickedCategory.name === "stones"){
