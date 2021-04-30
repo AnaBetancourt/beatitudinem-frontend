@@ -22,3 +22,8 @@
     font-size: x-large;
     color: darkcyan;
 }
+
+.nav-bar {
+    max-width: 275px;
+    max-height: 3000px;
+}
