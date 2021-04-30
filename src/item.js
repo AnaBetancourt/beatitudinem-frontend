@@ -28,16 +28,18 @@ class Item {
         removeHidden(iInfoCont)
         clearList()
 
-        const pic = document.createElement('img')
-        pic.src = `${this.image_url}`
-        pic.classList.add("pic")
-        
         iInfoCont.innerHTML = `
             <span class="info-name"><strong>${this.name}</strong></span><br>
             <span class="info-price">Price: $${this.price}</span> | <span class="info-quantity">Quantity: ${this.quantity}</span><br><br>
             <span class="info-description">${this.description}</span><br>
         `
-        iInfoCont.appendChild(pic)
+        if (!!this.image_url){
+            const pic = document.createElement('img')
+            pic.src = `${this.image_url}`
+            pic.classList.add("pic")
+            iInfoCont.appendChild(pic)
+        }
+        
         this.toggleButtons()
     }
 

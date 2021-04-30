@@ -34,6 +34,7 @@ class itemApi {
     }
 
     static addItem = () =>{
+        addHidden(formCont)
 
         const formData = {
             name: document.getElementById('create-name').value,
@@ -59,10 +60,7 @@ class itemApi {
             const itemData = resp.data
             const newI = new Item({id: itemData.id, ...itemData.attributes})
 
-            newI.addToList()
-            formCont.innerHTML = `
-                <button id="new-item">Add Item</button>
-            `
+            newI.showFullDetails()
         })
     }
 
