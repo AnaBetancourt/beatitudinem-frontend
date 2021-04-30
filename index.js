@@ -11,10 +11,11 @@ const candlePic = document.getElementById('candles')
 
 document.getElementById('new-item').addEventListener('click', showNewForm)
 allPic.addEventListener('click', showAll)
+stonePic.addEventListener('click', showStones)
+herbPic.addEventListener('click', showHerbs)
+candlePic.addEventListener('click', showCandles)
 
 function showNewForm(){
-    categoryApi.getCategories()
-
     this.parentElement.innerHTML = `
         <h1>Create New Item</h1>
         <label for="name">Item Name:</label>
@@ -32,6 +33,7 @@ function showNewForm(){
         <label for="submit"></label><br><br>
         <input type="submit" id="submit">
     `
+    categoryApi.addCategories()
     document.getElementById('submit').addEventListener('click', itemApi.addItem)
 
 }
@@ -41,7 +43,7 @@ function showAll(){
     herbPic.classList.add("hidden")
     candlePic.classList.add("hidden")
 
-    itemApi.grabItems()
+    
 }
 
 function showStones(){
@@ -49,6 +51,11 @@ function showStones(){
     herbPic.classList.add("hidden")
     candlePic.classList.add("hidden")
 
+    console.log(event)
+    console.log(this)
+    console.log(Category.all)
+    console.log(Item.all)
+    debugger
     //display only stone category
 }
 
@@ -67,3 +74,6 @@ function showCandles(){
 
     //display only candle category
 }
+
+itemApi.grabItems()
+categoryApi.getCategories()

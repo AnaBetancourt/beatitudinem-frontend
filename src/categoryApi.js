@@ -8,9 +8,11 @@ class categoryApi{
         .then(resp => {
             resp["data"].forEach(category => {
                 const newC = new Category({id: category.id, ...category.attributes})
-                
-                newC.addToDropdown()
             })
         })
+    }
+
+    static addCategories(){
+        Category.all.forEach(category => category.addToDropdown())
     }
 }
