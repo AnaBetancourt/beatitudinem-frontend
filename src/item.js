@@ -34,12 +34,11 @@ class Item {
             <span class="info-price">Price: $${this.price}</span> | <span class="info-quantity">Quantity: ${this.quantity}</span><br><br>
             <span class="info-description">${this.description}</span><br><br><br>
         `
-        if (!!this.image_url){
-            const pic = document.createElement('img')
-            pic.src = `${this.image_url}`
-            pic.classList.add("pic")
-            iInfoCont.appendChild(pic)
-        }
+        
+        const pic = document.createElement('img')
+        pic.src = `${this.image_url}`
+        pic.classList.add("pic")
+        iInfoCont.appendChild(pic)
         
         this.toggleButtons()
     }
@@ -101,8 +100,8 @@ class Item {
         formCont.innerHTML = `
             Name: <input type="text" id="new-name" name="name" value="${this.name}"><br>
             Price: <input type="number" id="new-price" name="price" value="${this.price}"><br>
-            Description: <textarea id="new-desc" name="description">${this.description}</textarea><br><br>
-            Image URL: <input type="text" id="new-image" name="image_url" value="${this.image_url}"><br>
+            Description: <textarea id="new-desc" name="description">${this.description}</textarea><br>
+            Image URL: <input type="text" id="new-image" name="image_url" value="${this.image_url}"><br><br>
         `
         removeHidden(formCont)
     }
