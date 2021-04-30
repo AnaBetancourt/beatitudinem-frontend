@@ -45,7 +45,6 @@ class Item {
     }
 
     toggleButtons() {
-        document.getElementById('navigation').classList.add("hidden")
         btnCont.innerHTML = ""
         btnCont.classList.remove("hidden")
 
@@ -75,7 +74,6 @@ class Item {
     }
 
     handleBackBtn(e){
-        document.getElementById('navigation').classList.remove("hidden")
         iInfoCont.classList.add("hidden")
         btnCont.classList.add("hidden")
     }

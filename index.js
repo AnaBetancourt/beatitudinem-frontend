@@ -3,20 +3,25 @@ const formCont = document.getElementById('form-container')
 const btnCont = document.getElementById('btn-cont')
 const iInfoCont = document.getElementById('full-info')
 const navigation = document.getElementById('navigation')
-const allPic = document.getElementById('all-items')
-const stonePic = document.getElementById('stones')
-const herbPic = document.getElementById('herbs')
-const candlePic = document.getElementById('candles')
 
+navigation.addEventListener('click', handleNavigationClick)
 
-document.getElementById('new-item').addEventListener('click', showNewForm)
-allPic.addEventListener('click', showAll)
-stonePic.addEventListener('click', showCategory)
-herbPic.addEventListener('click', showCategory)
-candlePic.addEventListener('click', showCategory)
+function handleNavigationClick(event){
+    const clickedBtn = event.target.parentElement.id
+
+    if (clickedBtn === "new-item"){
+        showNewForm()
+    } else if (clickedBtn === "all-items"){
+        showAll()
+    } else {
+        showCategory(clickedBtn)
+    }
+}
 
 function showNewForm(){
-    this.parentElement.innerHTML = `
+    listCont.innerHTML = ""
+    formCont.classList.remove("hidden")
+    formCont.innerHTML = `
         <h1>Create New Item</h1>
         <label for="name">Item Name:</label>
         <input type="text" id="create-name" name="name"><br>
@@ -39,42 +44,29 @@ function showNewForm(){
 }
 
 function showAll(){
-    navigation.innerHTML = `
-        <button id="new-item"><img src="https://i.imgur.com/AMw9gmn.png"></button>
-        <button id="all-items"><img src="https://i.imgur.com/5WjNLpF.png"></button>
-    `
+    formCont.classList.add("hidden")
+    listCont.innerHTML = ""
     Item.all.forEach(item => item.addToList())
 }
 
-function showCategory(){
-    const clickedCategory = Category.all.find(category => category.name === this.id)
+function showCategory(clickedBtn){
+    formCont.classList.add("hidden")
+    listCont.innerHTML = ""
+    const clickedCategory = Category.all.find(category => category.name === clickedBtn)
 
     if (clickedCategory.name === "stones"){
-        allPic.classList.add("hidden")
-        herbPic.classList.add("hidden")
-        candlePic.classList.add("hidden")
-        
         const list = clickedCategory.allItems()
         list.forEach(item => item.addToList())
 
     } else if (clickedCategory.name === "herbs"){
-        stonePic.classList.add("hidden")
-        allPic.classList.add("hidden")
-        candlePic.classList.add("hidden")
-
         const list = clickedCategory.allItems()
         list.forEach(item => item.addToList())
 
     } else if (clickedCategory.name === "candles"){
-        stonePic.classList.add("hidden")
-        herbPic.classList.add("hidden")
-        allPic.classList.add("hidden")
-
         const list = clickedCategory.allItems()
         list.forEach(item => item.addToList())
     }
 }
-
 
 itemApi.grabItems()
 categoryApi.getCategories()
