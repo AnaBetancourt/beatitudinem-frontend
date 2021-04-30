@@ -7,7 +7,7 @@ class categoryApi{
         .then(resp => resp.json())
         .then(resp => {
             resp["data"].forEach(category => {
-                const newC = new Category({id: category.id, ...category.attributes})
+                new Category({id: category.id, ...category.attributes})
             })
         })
     }
