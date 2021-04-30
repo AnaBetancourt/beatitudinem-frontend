@@ -35,7 +35,8 @@ class itemApi {
         .then(resp => {item.showFullDetails()})
     }
 
-    static addItem(){
+    static addItem = () =>{
+
         const formData = {
             name: document.getElementById('create-name').value,
             price: document.getElementById('create-price').value,
@@ -44,10 +45,27 @@ class itemApi {
             image_url: document.getElementById('create-img-url').value,
             category_id: document.getElementById('dropdown').value
         }
-        console.log(event)
-        console.log(formData)
-        console.log(this)
-        debugger
+
+        const configObj = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(formData)
+        }
+
+        fetch(this.itemUrl, configObj)
+        .then(resp => resp.json())
+        .then(resp => {
+            const itemData = resp.data
+            const newI = new Item({id: itemData.id, ...itemData.attributes})
+
+            newI.addToList()
+            formCont.innerHTML = `
+                <button id="new-item">Add Item</button>
+            `
+        })
     }
 
 }
