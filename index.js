@@ -11,9 +11,9 @@ const candlePic = document.getElementById('candles')
 
 document.getElementById('new-item').addEventListener('click', showNewForm)
 allPic.addEventListener('click', showAll)
-stonePic.addEventListener('click', showStones)
-herbPic.addEventListener('click', showHerbs)
-candlePic.addEventListener('click', showCandles)
+stonePic.addEventListener('click', showCategory)
+herbPic.addEventListener('click', showCategory)
+candlePic.addEventListener('click', showCategory)
 
 function showNewForm(){
     this.parentElement.innerHTML = `
@@ -43,37 +43,38 @@ function showAll(){
     herbPic.classList.add("hidden")
     candlePic.classList.add("hidden")
 
-    
+    Item.all.forEach(item => item.addToList())
 }
 
-function showStones(){
-    allPic.classList.add("hidden")
-    herbPic.classList.add("hidden")
-    candlePic.classList.add("hidden")
+function showCategory(){
+    const clickedCategory = Category.all.find(category => category.name === this.id)
 
-    console.log(event)
-    console.log(this)
-    console.log(Category.all)
-    console.log(Item.all)
-    debugger
-    //display only stone category
+    if (clickedCategory.name === "stones"){
+        allPic.classList.add("hidden")
+        herbPic.classList.add("hidden")
+        candlePic.classList.add("hidden")
+        
+        const list = clickedCategory.allItems()
+        list.forEach(item => item.addToList())
+
+    } else if (clickedCategory.name === "herbs"){
+        stonePic.classList.add("hidden")
+        allPic.classList.add("hidden")
+        candlePic.classList.add("hidden")
+
+        const list = clickedCategory.allItems()
+        list.forEach(item => item.addToList())
+
+    } else if (clickedCategory.name === "candles"){
+        stonePic.classList.add("hidden")
+        herbPic.classList.add("hidden")
+        allPic.classList.add("hidden")
+
+        const list = clickedCategory.allItems()
+        list.forEach(item => item.addToList())
+    }
 }
 
-function showHerbs(){
-    stonePic.classList.add("hidden")
-    allPic.classList.add("hidden")
-    candlePic.classList.add("hidden")
-
-    //display only herb category
-}
-
-function showCandles(){
-    stonePic.classList.add("hidden")
-    herbPic.classList.add("hidden")
-    allPic.classList.add("hidden")
-
-    //display only candle category
-}
 
 itemApi.grabItems()
 categoryApi.getCategories()

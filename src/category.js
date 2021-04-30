@@ -9,7 +9,7 @@ class Category {
     }
 
     allItems(){
-        return Item.all.filter((item) => item.categoryId === parseInt(this.id))
+        return Item.all.filter(item => parseInt(item.category_id) === parseInt(this.id))
     }
 
     addToDropdown(){
