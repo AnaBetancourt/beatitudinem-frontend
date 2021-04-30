@@ -3,7 +3,7 @@
     height: auto;
 }
 
-#header-title {
+.header-title {
     text-align: center;
 }
 
@@ -23,7 +23,11 @@
     color: darkcyan;
 }
 
-.nav-bar {
+.nav-img {
     max-width: 275px;
     max-height: 3000px;
+}
+
+.nav-btn {
+    background-color: rgb(241, 247, 247);
 }
