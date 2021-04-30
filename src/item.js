@@ -26,7 +26,7 @@ class Item {
 
     showFullDetails = () => {
         removeHidden(iInfoCont)
-        clearList()
+        clearElement(listCont)
 
         iInfoCont.innerHTML = `
             <span class="info-name"><strong>${this.name}</strong></span><br>

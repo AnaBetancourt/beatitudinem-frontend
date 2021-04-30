@@ -6,8 +6,8 @@ const navigation = document.getElementById('navigation')
 
 navigation.addEventListener('click', handleNavigationClick)
 
-function clearList(){
-    listCont.innerHTML = ""
+function clearElement(element){
+    element.innerHTML = ""
 }
 
 function addHidden(element){
@@ -31,7 +31,9 @@ function handleNavigationClick(event){
 }
 
 function showNewForm(){
-    clearList()
+    clearElement(listCont)
+    clearElement(btnCont)
+    clearElement(iInfoCont)
     removeHidden(formCont)
 
     formCont.innerHTML = `
@@ -57,13 +59,19 @@ function showNewForm(){
 
 function showAll(){
     addHidden(formCont)
-    clearList()
+    clearElement(listCont)
+    clearElement(btnCont)
+    clearElement(iInfoCont)
+
     Item.all.forEach(item => item.addToList())
 }
 
 function showCategory(clickedBtn){
     addHidden(formCont)
-    clearList()
+    clearElement(listCont)
+    clearElement(btnCont)
+    clearElement(iInfoCont)
+    
     const clickedCategory = Category.all.find(category => category.name === clickedBtn)
 
     if (clickedCategory.name === "stones"){
