@@ -102,6 +102,7 @@ class Item {
             Name: <input type="text" id="new-name" name="name" value="${this.name}"><br>
             Price: <input type="number" id="new-price" name="price" value="${this.price}"><br>
             Description: <textarea id="new-desc" name="description">${this.description}</textarea><br><br>
+            Image URL: <input type="text" id="new-image" name="image_url" value="${this.image_url}"><br>
         `
         removeHidden(formCont)
     }
@@ -110,6 +111,7 @@ class Item {
         this.name = document.getElementById('new-name').value
         this.price = document.getElementById('new-price').value
         this.description = document.getElementById('new-desc').value
+        this.image_url = document.getElementById('new-image').value
 
         itemApi.editItem(this)
     }

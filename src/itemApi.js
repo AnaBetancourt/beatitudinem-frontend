@@ -16,7 +16,8 @@ class itemApi {
             name: item.name,
             price: item.price,
             description: item.description,
-            quantity: item.quantity
+            quantity: item.quantity,
+            image_url: item.image_url
         }
 
         const configObj = {
