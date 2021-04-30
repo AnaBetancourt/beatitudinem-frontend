@@ -43,3 +43,10 @@ body {
 #item-view {
     background-color: rgb(255, 255, 255, 0.5);
 }
+
+#item-list {
+    list-style-type: none;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: x-large;
+}

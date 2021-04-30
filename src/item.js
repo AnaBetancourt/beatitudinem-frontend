@@ -20,7 +20,7 @@ class Item {
     }
 
     addToList(){
-        this.li.innerHTML= `<strong>${this.name}</strong>`
+        this.li.innerHTML= `<strong>${this.name}</strong><br><br>`
         listCont.appendChild(this.li)
     }
 
