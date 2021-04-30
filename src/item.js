@@ -29,7 +29,6 @@ class Item {
     }
 
     showFullDetails = () => {
-        iListCont.classList.add("hidden")
         iInfoCont.classList.remove("hidden")
 
         const pic = document.createElement('img')
@@ -46,7 +45,7 @@ class Item {
     }
 
     toggleButtons() {
-        formCont.classList.add("hidden")
+        document.getElementById('navigation').classList.add("hidden")
         btnCont.innerHTML = ""
         btnCont.classList.remove("hidden")
 
@@ -76,12 +75,9 @@ class Item {
     }
 
     handleBackBtn(e){
-        document.getElementById('item-list').innerHTML = ""
-        itemApi.grabItems()
+        document.getElementById('navigation').classList.remove("hidden")
         iInfoCont.classList.add("hidden")
         btnCont.classList.add("hidden")
-        iListCont.classList.remove("hidden")
-        formCont.classList.remove("hidden")
     }
 
     handleEditBtn = (e) =>{

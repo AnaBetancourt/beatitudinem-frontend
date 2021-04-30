@@ -1,8 +1,8 @@
 const listCont = document.getElementById('item-list')
 const formCont = document.getElementById('form-container')
 const btnCont = document.getElementById('btn-cont')
-const iListCont = document.getElementById('item-container')
 const iInfoCont = document.getElementById('full-info')
+const navigation = document.getElementById('navigation')
 const allPic = document.getElementById('all-items')
 const stonePic = document.getElementById('stones')
 const herbPic = document.getElementById('herbs')
@@ -39,10 +39,10 @@ function showNewForm(){
 }
 
 function showAll(){
-    stonePic.classList.add("hidden")
-    herbPic.classList.add("hidden")
-    candlePic.classList.add("hidden")
-
+    navigation.innerHTML = `
+        <button id="new-item"><img src="https://i.imgur.com/AMw9gmn.png"></button>
+        <button id="all-items"><img src="https://i.imgur.com/5WjNLpF.png"></button>
+    `
     Item.all.forEach(item => item.addToList())
 }
 
