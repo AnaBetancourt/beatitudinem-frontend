@@ -19,8 +19,26 @@ class Item {
         Item.all.push(this)
     }
 
+    static showExpensiveItems = () =>{
+        addHidden(fullView)
+        addHidden(formCont)
+        clearElement(listCont)
+        clearElement(btnCont)
+        clearElement(iInfoCont)
+
+        const container = document.getElementById('over-10-dollars')
+        const items = this.all.filter(item => item.price > 9.99)
+        
+        items.forEach(item => {
+            const li = document.createElement('li')
+            li.innerHTML = `<strong>${item.name}</strong> - ${item.price}<br><br>`
+            container.append(li)
+        })
+    
+    }
+
     addToList(){
-        this.li.innerHTML= `<strong>${this.name}</strong><br><br>`
+        this.li.innerHTML= `<strong>${this.name}</strong> - ${this.price}<br><br>`
         listCont.appendChild(this.li)
     }
 

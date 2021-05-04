@@ -34,7 +34,9 @@ class itemApi {
         .then(resp => {item.showFullDetails()})
     }
 
-    static addItem = () =>{
+    static addItem = (event) =>{
+        event.preventDefault()
+
         addHidden(formCont)
 
         const formData = {

@@ -40,23 +40,25 @@ function showNewForm(){
 
     formCont.innerHTML = `
         <h1>Create New Item</h1>
-        <label for="name">Item Name:</label>
-        <input type="text" id="create-name" name="name"><br>
-        <label for="price">Price:</label>
-        <input type="number" id="create-price" name="price"><br>
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="create-quantity" name="quantity"><br>
-        <label for="description">Description:</label>
-        <textarea id="create-desc" name="description"></textarea><br>
-        <label for="image_url">Image URL:</label>
-        <input type="text" id="create-img-url" name="image_url"><br>
-        <label for="category">Category:</label>
-        <select name="categories" id="dropdown"</select><br><br>
-        <label for="submit"></label><br><br>
-        <input type="submit" id="submit">
+        <form id="new-item-form">
+            <label for="name">Item Name:</label>
+            <input type="text" id="create-name" name="name"><br>
+            <label for="price">Price:</label>
+            <input type="number" id="create-price" name="price"><br>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="create-quantity" name="quantity"><br>
+            <label for="description">Description:</label>
+            <textarea id="create-desc" name="description"></textarea><br>
+            <label for="image_url">Image URL:</label>
+            <input type="text" id="create-img-url" name="image_url"><br>
+            <label for="category">Category:</label>
+            <select name="categories" id="dropdown"</select><br><br>
+            <label for="submit"></label><br><br>
+            <input type="submit" id="submit">
+        </form>
     `
     categoryApi.addCategories()
-    document.getElementById('submit').addEventListener('click', itemApi.addItem)
+    document.getElementById('new-item-form').addEventListener('submit', itemApi.addItem)
 }
 
 function showAll(){
@@ -65,6 +67,13 @@ function showAll(){
     clearElement(listCont)
     clearElement(btnCont)
     clearElement(iInfoCont)
+
+    const expensive = document.createElement('button')
+    expensive.id = "expensive-btn"
+    expensive.innerText = "Items Over $10"
+    expensive.addEventListener('click', Item.showExpensiveItems)
+
+    document.getElementById('new-btn').append(expensive)
 
     Item.all.forEach(item => item.addToList())
 }
